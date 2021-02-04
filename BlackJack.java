@@ -172,13 +172,11 @@ public class BlackJack
 
     public static void main(String[] args)
     {
-        int contatore = 0;
         String[][] mazzoInGioco = creazioneMazzo();
         mischiaMazzo(mazzoInGioco);
 
         System.out.println("Banco: ");
         String[][] manoBanco = daiCarta(mazzoInGioco);
-        contatore++;
         daiCarta(mazzoInGioco);
         stampaMano(manoBanco);
         System.out.println("Punteggio attuale: " + calcolaPunteggio(manoBanco));
