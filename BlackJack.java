@@ -3,7 +3,7 @@ package devis;
 /**
  *
  * @author Devis Belmonte
- * @version 4 Feb 2021
+ * @version 2 Feb 2021
  */
 public class BlackJack
 {
@@ -63,7 +63,7 @@ public class BlackJack
         return mazzoOrdinato;
     }
 
-    public static String[][] mischiaMazzo(String[][] mazzoMischiato)
+    public static void mischiaMazzo(final String[][] mazzoMischiato)
     {
         for (int i = 0; i < mazzoMischiato.length * 2; i++)
         {
@@ -79,10 +79,9 @@ public class BlackJack
             mazzoMischiato[0][1] = mazzoMischiato[rnd][1];
             mazzoMischiato[rnd][1] = tmp;
         }
-        return mazzoMischiato;
     }
 
-    public static String[][] daiCarta(String[][] mazzoInGioco)
+    public static String[][] daiCarta(final String[][] mazzoInGioco)
     {
         String[][] tmp = new String[2][2];
         for (int i = 0; i < 2; i++)
@@ -92,7 +91,7 @@ public class BlackJack
         }
         return tmp;
     }
-
+    
     public static int calcolaPunteggio(String[][] mdc)
     {
         int punteggio = 0;
@@ -158,26 +157,29 @@ public class BlackJack
         return punteggio;
     }
 
-    public static String[][] stampaMano(String[][] mdc)
+    public static void stampaMano(String[][] mano)
     {
-        for (int i = 0; i < mdc.length; i++)
+        for (int i = 0; i < mano.length; i++)
         {
             if (i != 0 && i % 13 == 0)
             {
                 System.out.println("");
             }
-            System.out.print(mdc[i][0] + mdc[i][1] + " ");
+            System.out.print(mano[i][0] + mano[i][1] + " ");
         }
         System.out.println("");
-        return mdc;
     }
 
     public static void main(String[] args)
     {
-        String[][] mazzoInGioco = mischiaMazzo(creazioneMazzo());
+        int contatore = 0;
+        String[][] mazzoInGioco = creazioneMazzo();
+        mischiaMazzo(mazzoInGioco);
 
         System.out.println("Banco: ");
         String[][] manoBanco = daiCarta(mazzoInGioco);
+        contatore++;
+        daiCarta(mazzoInGioco);
         stampaMano(manoBanco);
         System.out.println("Punteggio attuale: " + calcolaPunteggio(manoBanco));
 
