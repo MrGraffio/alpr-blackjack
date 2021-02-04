@@ -3,7 +3,7 @@ package devis;
 /**
  *
  * @author Devis Belmonte
- * @version 2 Feb 2021
+ * @version 4 Feb 2021
  */
 public class BlackJack
 {
